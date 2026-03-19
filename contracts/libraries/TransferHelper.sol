@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 // contracts/libraries/TransferHelper.sol
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.28;
 
 library TransferHelper {
     function safeTransfer(address token, address to, uint value) internal {

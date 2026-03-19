@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 // contracts/libraries/Math.sol
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.28;
 
 library Math {
     function sqrt(uint y) internal pure returns (uint z) {
