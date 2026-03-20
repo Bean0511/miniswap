@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import { useWeb3 } from '@/context/Web3Context';
 import ConnectButton from '@/components/ConnectButton';
-import { factoryABI } from '@/abis/factory';
-import { routerABI } from '@/abis/router';
-import { wethABI } from '@/abis/weth';
+import factoryABI from '@/abis/MiniswapFactory.json';
+import routerABI from '@/abis/MiniswapRouter.json';
+import wethABI from '@/abis/WETH9.json';
 
 const FACTORY_ADDRESS = process.env.NEXT_PUBLIC_FACTORY_ADDRESS!;
 const ROUTER_ADDRESS = process.env.NEXT_PUBLIC_ROUTER_ADDRESS!;
@@ -22,7 +22,9 @@ export default function Home() {
     if (!provider) return;
     const fetchData = async () => {
       // @ts-ignore
-      const factory = new ethers.Contract(FACTORY_ADDRESS, factoryABI, provider);
+      const factory = new ethers.Contract(FACTORY_ADDRESS, factoryABI.abi, provider);
+      console.log('factoryABI', factoryABI, 'FACTORY_ADDRESS', FACTORY_ADDRESS)
+      console.log('Factory contract:', factory);
       const count = await factory.allPairsLength();
       setPairCount(Number(count));
     };
